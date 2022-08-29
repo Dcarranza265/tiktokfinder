@@ -75,3 +75,6 @@ a{
 .list-group-item{
     color: white;
 }
+.card{
+    --bs-card-border-color: none;
+}
