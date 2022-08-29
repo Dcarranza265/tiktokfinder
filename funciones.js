@@ -25,7 +25,7 @@ const options = {
 };
 
 document.addEventListener('DOMContentLoaded', () =>{    
-    fetchdata("rockdelbueno")    
+    fetchdata("liverockmusic")    
 })
 
 btnBuscar.addEventListener ('click', () =>{
