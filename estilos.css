@@ -76,5 +76,5 @@ a{
     color: white;
 }
 .card{
-    --bs-card-border-color: none;
+    --bs-card-border-color: none !important;
 }
