@@ -19,7 +19,7 @@ const reproducciones = document.querySelectorAll(".reproducciones")
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '0cc3a33b52msh7a085728d7c31b7p10965fjsn846a5cd10375',
+		'X-RapidAPI-Key': 'a3aa94d648msh8d1925923eb6c1bp1e6aacjsn5ecc5c53cff6',
 		'X-RapidAPI-Host': 'tiktok82.p.rapidapi.com'
 	}
 };
