@@ -8,8 +8,8 @@ main{
 #principal{
     max-width: 60rem !important;
 }
-h2,h5, h6, h4, li span, span{
-    color: white;
+h2,h5, h6, h4, li, span, span{
+    color: white;    
 }
 
 h5{
@@ -63,7 +63,11 @@ h5{
     }
     #totalVideos, #seguidores, #siguiendo, #corazones{
         margin-left: 10px;
-    }
+    }    
+}
+
+@media (min-width: 768px){    
+    #imgUsuario {margin-left: 20px;}
 }
 
 a{
@@ -74,7 +78,19 @@ a{
 }
 .list-group-item{
     color: white;
+    
 }
+
 .card{
-    --bs-card-border-color: none !important;
+    --bs-card-border-color: none;
+}
+
+@media (max-width: 425px){
+    #nickname { font-size: 20px;}
+    #estadoCuenta, h5.ms-1{ font-size: 15px ;}
+}
+
+@media (min-width: 426px){
+    #nickname { font-size: 40px;}
+    
 }

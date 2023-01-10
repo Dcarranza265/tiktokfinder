@@ -24,8 +24,9 @@ const options = {
 	}
 };
 
+
 document.addEventListener('DOMContentLoaded', () =>{    
-    fetchdata("liverockmusic")    
+    fetchdata("memoriasdelfutbol_of")    
 })
 
 btnBuscar.addEventListener ('click', () =>{
@@ -97,26 +98,48 @@ const fetchdata2 = async (id, secUid) =>{
             const message2 = `An error has occured: ${res2.status}`;
             throw new Error(message2);
         }
-        const datos2 = await res2.json()
-        mostrarVideos(datos2)        
+        const datos2 = await res2.json()        
+        mostrarDatosVideos(datos2)        
     
     }catch (error) {
         console.log(error);
     }
 }
 
-const mostrarVideos = (datosVideos) =>{         
-    for (let index = 0; index < 4; index++) {        
-        videos[index].setAttribute("src", datosVideos.data.itemList[index].video.playAddr)
-        const date = new Date((datosVideos.data.itemList[index].createTime)*1000);
-        const dia = date.getDate()
-        const mes = date.getMonth()
-        const año = date.getFullYear()
-        fechaVideo[index].textContent = "Fecha: " + dia + "/" + mes + "/" + año 
-        duracion[index].textContent = "Duracion: " + datosVideos.data.itemList[index].video.duration + " seg." 
-        reproducciones[index].textContent = datosVideos.data.itemList[index].stats.playCount + " reproducciones"            
+const fetchdata3 = async (idVideo, pos) =>{
+    try{
+        const res3 = await fetch(`https://tiktok82.p.rapidapi.com/getVideoInfo?video_id=${idVideo}`, options)
+        if (!res3.ok) {
+            alert("Videos no encontrados")            
+            const message3 = `An error has occured: ${res3.status}`;
+            throw new Error(message3);
+        }
+        const datos3 = await res3.json()            
+        mostrarVideo(datos3,pos)
+    
+    }catch (error) {
+        console.log(error);
     }
 
+    
+}
+
+const mostrarDatosVideos = (datosVideos) =>{         
+    for (let index = 0; index < 4; index++) {        
+        const idVideo = datosVideos.data.items[index].id
+        fetchdata3(idVideo, index)        
+        console.log(idVideo)        
+        const date = new Date((datosVideos.data.items[index].createTime)*1000);
+        const dia = date.getDate()
+        const mes = date.getMonth()+1
+        const año = date.getFullYear()
+        fechaVideo[index].textContent =  dia + "/" + mes + "/" + año 
+        duracion[index].textContent = datosVideos.data.items[index].video.duration + " seg." 
+        reproducciones[index].textContent = datosVideos.data.items[index].stats.playCount            
+    }
 }
     
+const mostrarVideo = (videoUrl, pos) => {
+    videos[pos].setAttribute("src", videoUrl.data.video.playAddr)
+}
 
